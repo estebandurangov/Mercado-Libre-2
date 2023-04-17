@@ -1,26 +1,36 @@
 import React from 'react'
 import Image from 'next/image';
+import { useCarContext, Producto } from '@/context/carContext';
+import _ from 'lodash';
 
 interface OfertasProps{
-    nombre: string;
-    image: string;
-    precio: number;
-    descuento: number;
-
+    producto: Producto;
 }
 
-const Ofertas = ({nombre, image, precio, descuento}:OfertasProps) => {
+const Ofertas = ({producto}:OfertasProps) => {
+
+    const {setItemsCar, itemsCar} = useCarContext(); 
+
+    const addItem = () => {
+      setItemsCar((prev) => [...prev, producto]);
+    };
+
   return (
-    <div className='flex flex-col bg-white rounded pl-4 pb-14'>
-        <Image src={image} alt={nombre} width={225} height={225}/>
+  <>
+    <input type="hidden" name={producto.nombre} />
+    <button onClick={addItem}>
+      <div className='flex flex-col bg-white rounded pl-4 pb-14'>
+        <Image src={producto.image} alt={producto.nombre} width={225} height={225}/>
         <div className='flex'>
-            <span>{precio}</span>
-            <span>{descuento}</span>
+            <span>{producto.precio}</span>
+            <span>{producto.descuento}</span>
         </div>
         <div>
             <span>Envío gratis</span>
         </div>
-    </div>
+      </div>
+    </button>
+  </>
   )
 }
 

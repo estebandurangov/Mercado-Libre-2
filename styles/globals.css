@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto, 'sans-serif';
-}
 
 .debug{
     border: 1px solid red;
+}
+
+td,th{
+    @apply px-2;
+}
+
+td button{
+    @apply p-1 text-xl font-bold text-azul rounded-lg border border-azul;
 }

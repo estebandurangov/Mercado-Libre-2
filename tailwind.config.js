@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors:{
         'nav': '#FFF159',
+        'azul': '#3483FA',
       }
 
     },
