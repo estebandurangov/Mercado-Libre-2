@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
-import { useCarContext, Producto } from '@/context/carContext';
-import _ from 'lodash';
+import { useCarContext, Producto, CarProduct } from '@/context/carContext';
+import _, { keysIn } from 'lodash';
 
 interface OfertasProps{
     producto: Producto;
@@ -12,7 +12,23 @@ const Ofertas = ({producto}:OfertasProps) => {
     const {setItemsCar, itemsCar} = useCarContext(); 
 
     const addItem = () => {
-      setItemsCar((prev) => [...prev, producto]);
+      const productToCar:CarProduct = {
+        producto:producto,
+        cantidad:0
+      };
+
+      const itemIsInCar = (_.size(_.filter(itemsCar, item => item?.producto === productToCar.producto)))
+      if (!itemIsInCar){
+        productToCar.cantidad += 1;
+        setItemsCar((prev) => [...prev, productToCar]);
+      }else{
+        //setItemsCar(itemsCar.)
+        productToCar.cantidad += 1;
+      }
+      console.log(keysIn(itemsCar))
+      //console.log(_.groupBy, 'cantidad')
+      //console.log(_.findIndex(users, function(o) { return o.user == 'barney'; }))
+      //setItemsCar((prev) => [...prev, producto]);
     };
 
   return (

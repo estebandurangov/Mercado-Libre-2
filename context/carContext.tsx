@@ -3,8 +3,19 @@ import { Dispatch, SetStateAction, useContext, useState, createContext } from "r
 interface CarContextProps{
     openCar: boolean ;
     setOpenCar: Dispatch<SetStateAction<boolean>>;
-    itemsCar: Producto[];
-    setItemsCar: Dispatch<SetStateAction<Producto[]>>;
+    itemsCar: CarProduct[];
+    setItemsCar: Dispatch<SetStateAction<CarProduct[]>>;
+}
+interface Producto{
+    image: string;
+    nombre: string;
+    precio: number;
+    descuento: number;
+}
+
+interface CarProduct{
+    producto: Producto;
+    cantidad: number;
 }
 
 const CarContext = createContext<CarContextProps>(
@@ -13,20 +24,13 @@ const CarContext = createContext<CarContextProps>(
 
 export const useCarContext = () => useContext(CarContext);
 
-interface Producto{
-    image: string;
-    nombre: string;
-    precio: number;
-    descuento: number;
-}
-
 interface CarContextProviderProps{
     children: JSX.Element;
 }
 
 const CarContextProvider = ({children}: CarContextProviderProps) => {
     const [openCar, setOpenCar] = useState<boolean>(false);
-    const [itemsCar, setItemsCar] = useState<Producto[]>([]);
+    const [itemsCar, setItemsCar] = useState<CarProduct[]>([]);
 
     return(
         <CarContext.Provider 
@@ -42,5 +46,7 @@ const CarContextProvider = ({children}: CarContextProviderProps) => {
 
 }
 
+
+
 export { CarContextProvider };
-export type { Producto };
+export type { Producto, CarProduct };

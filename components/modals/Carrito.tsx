@@ -6,8 +6,8 @@ import Image from 'next/image';
 
 const Carrito = () => {
   const { openCar, setOpenCar, itemsCar } = useCarContext();
-  const listCar = _.groupBy(itemsCar, 'nombre');
-  console.log(_.filter(itemsCar, item => item?.nombre === 'cortina')[0])
+  //console.log(itemsCar)
+  //console.log(_.filter(itemsCar, item => item?.nombre === 'cortina')[0])
   return (
     <Modal open={openCar} setOpen={setOpenCar} titulo='Carrito de Compras'>
       <table className='text-center'>
@@ -21,7 +21,7 @@ const Carrito = () => {
           </tr>
         </thead>
         <tbody>
-           {Object.keys(listCar).map((producto, index) => {
+           {/*Object.keys(listCar).map((producto, index) => {
             const item = _.filter(itemsCar, item => item?.nombre === producto)
             const cantidad = _.size(item)
                 return (
@@ -42,7 +42,7 @@ const Carrito = () => {
                         </td>
                     </tr>
                 );
-            })} 
+            })*/} 
         </tbody>
       </table>
     </Modal>
