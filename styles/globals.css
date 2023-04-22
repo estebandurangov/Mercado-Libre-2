@@ -14,3 +14,7 @@ td,th{
 td button{
     @apply p-1 text-xl font-bold text-azul rounded-lg border border-azul;
 }
+
+.index-container{
+    @apply flex flex-col lg:w-2/3 lg:mx-auto mt-6;
+}

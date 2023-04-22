@@ -22,13 +22,10 @@ const Ofertas = ({producto}:OfertasProps) => {
         productToCar.cantidad += 1;
         setItemsCar((prev) => [...prev, productToCar]);
       }else{
-        //setItemsCar(itemsCar.)
-        productToCar.cantidad += 1;
+        const indice = itemsCar.findIndex(item => item.producto === producto)
+        itemsCar[indice].cantidad += 1
+        setItemsCar(itemsCar)
       }
-      console.log(keysIn(itemsCar))
-      //console.log(_.groupBy, 'cantidad')
-      //console.log(_.findIndex(users, function(o) { return o.user == 'barney'; }))
-      //setItemsCar((prev) => [...prev, producto]);
     };
 
   return (

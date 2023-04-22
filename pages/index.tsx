@@ -9,6 +9,8 @@ import { CarContextProvider, useCarContext } from '@/context/carContext';
 import {Carrito} from '@/components/modals/Carrito';
 import { data } from '@/utils/data';
 import { Prueba } from '@/components/Prueba'
+import { Suscripciones } from '@/components/Suscripciones'
+import Beneficios from '@/components/Beneficios'
 
 
 const index = () => {
@@ -48,6 +50,10 @@ const index = () => {
             );
           } )}
         </div>
+        <div>
+          <Suscripciones/>
+        </div>
+        <Beneficios/>
         <Prueba/>
         <Carrito/>
         </>
