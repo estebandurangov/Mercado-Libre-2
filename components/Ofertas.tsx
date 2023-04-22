@@ -3,6 +3,9 @@ import Image from 'next/image';
 import { useCarContext, Producto, CarProduct } from '@/context/carContext';
 import _, { keysIn } from 'lodash';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 interface OfertasProps{
     producto: Producto;
 }
@@ -26,23 +29,30 @@ const Ofertas = ({producto}:OfertasProps) => {
         itemsCar[indice].cantidad += 1
         setItemsCar(itemsCar)
       }
+      toast.success('Carrito Actualizado', {
+        position: "bottom-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     };
 
   return (
   <>
-    <input type="hidden" name={producto.nombre} />
-    <button onClick={addItem}>
-      <div className='flex flex-col bg-white rounded pl-4 pb-14'>
-        <Image src={producto.image} alt={producto.nombre} width={225} height={225}/>
-        <div className='flex'>
-            <span>{producto.precio}</span>
-            <span>{producto.descuento}</span>
-        </div>
-        <div>
-            <span>Envío gratis</span>
-        </div>
+    <div onClick={addItem} className='flex flex-col bg-white cursor-pointer rounded pl-4 pb-14'>
+      <Image src={producto.image} alt={producto.nombre} width={225} height={225}/>
+      <div className='flex items-center gap-2'>
+          <span className='text-2xl'>{producto.precio}</span>
+          <span className='text-sm text-verde'> {producto.descuento}% off </span>
       </div>
-    </button>
+      <div>
+          <span className='text-verde font-semibold'>Envío gratis</span>
+      </div>
+    </div>
   </>
   )
 }

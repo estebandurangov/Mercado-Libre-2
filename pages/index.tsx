@@ -11,6 +11,7 @@ import { data } from '@/utils/data';
 import { Prueba } from '@/components/Prueba'
 import { Suscripciones } from '@/components/Suscripciones'
 import Beneficios from '@/components/Beneficios'
+import { ToastContainer } from 'react-toastify'
 
 
 const index = () => {
@@ -54,8 +55,8 @@ const index = () => {
           <Suscripciones/>
         </div>
         <Beneficios/>
-        <Prueba/>
         <Carrito/>
+        <ToastContainer />
         </>
       </CarContextProvider>
       

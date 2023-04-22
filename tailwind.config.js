@@ -14,7 +14,8 @@ module.exports = {
         'nav': '#FFF159',
         'azul': '#3483FA',
         'gradient': '#A90F90',
-        'endGradient': '#0C1A51'
+        'endGradient': '#0C1A51',
+        'verde': '#00A650'
       }
 
     },

@@ -1,12 +1,13 @@
+import Image from "next/image";
+
 const Beneficios = () => {
   return (
     <div className="index-container">
-        <div className="flex ">
-            <Beneficio titulo="Sin cargo con el nivel 6" span="Disney+ y Star+" opcional="" image=""/>
-            <Beneficio titulo="Hasta 50% OFF" span="HBO Max" opcional="7 DÍAS GRATIS" image=""/>
-            <Beneficio titulo="Hasta 50% OFF" span="Paramount+" opcional="7 DÍAS GRATIS" image=""/>
+        <div className="flex justify-between gap-3">
+            <Beneficio titulo="Sin cargo con el nivel 6" span="Disney+ y Star+" opcional="" image="/media/beneficios/comboplus.png"/>
+            <Beneficio titulo="Hasta 50% OFF" span="HBO Max" opcional="7 DÍAS GRATIS" image="/media/beneficios/hbo.png"/>
+            <Beneficio titulo="Hasta 50% OFF" span="Paramount+" opcional="7 DÍAS GRATIS" image="/media/beneficios/param.png"/>
         </div>
-        
     </div>
   )
 }
@@ -18,17 +19,19 @@ interface BeneficioProps{
     opcional: string;
 }
 
-const Beneficio = ({titulo, span, opcional}: BeneficioProps) => {
+const Beneficio = ({titulo, span, opcional, image}: BeneficioProps) => {
     return (
-        <div className="w-1/3">
-            <div>
+        <div className="flex items-end h-[250px] w-1/3 bg-cover bg-no-repeat bg-center img-fondo p-6 rounded-lg" >
+            <div className="flex items-center gap-3 ">
+                <div>
+                    <Image src={image} alt={titulo} width={80} height={80}/>
+                </div>
+                <div className="text-white font-bold">
+                    <span className="text-xs">{opcional}</span>
+                    <h5 className="text-2xl ">{titulo}</h5>
+                    <span className="text-lg font-medium">{span}</span>
+                </div>
             </div>
-            <div>
-                <span>{opcional}</span>
-                <h5>{titulo}</h5>
-                <span>{span}</span>
-            </div>
-            
         </div>
     )
 }
