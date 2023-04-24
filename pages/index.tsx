@@ -1,68 +1,87 @@
-
-import { MediosPago } from '@/components/MediosPago'
-import { Nav } from '@/components/Nav'
-import { Ofertas } from '@/components/Ofertas'
-import Head from 'next/head'
-import Image from 'next/image'
-import React from 'react'
+import { MediosPago } from '@/components/MediosPago';
+import { Nav } from '@/components/Nav';
+import { Ofertas } from '@/components/Ofertas';
+import Head from 'next/head';
+import Image from 'next/image';
+import React from 'react';
 import { CarContextProvider, useCarContext } from '@/context/carContext';
-import {Carrito} from '@/components/modals/Carrito';
+import { Carrito } from '@/components/modals/Carrito';
 import { data } from '@/utils/data';
-import { Prueba } from '@/components/Prueba'
-import { Suscripciones } from '@/components/Suscripciones'
-import Beneficios from '@/components/Beneficios'
-import { ToastContainer } from 'react-toastify'
-
+import { Suscripciones } from '@/components/Suscripciones';
+import { ToastContainer } from 'react-toastify';
+import Footer from '@/components/Footer';
+import { Seccion } from '@/components/Seccion';
+import { Beneficios } from '@/components/Beneficios';
+import { Categorias } from '@/components/Categorias';
+import { Info } from '@/components/Info';
 
 const index = () => {
-  
-  const {setItemsCar, itemsCar} = useCarContext(); 
-
   return (
     <>
-    <Head>
-      <title>Mercado Libre</title>
-    </Head>
-    <div className='flex flex-col bg-slate-200 w-screen h-full '>
-      <CarContextProvider>
-        <>
-        <Nav/>
-        <div className='hidden md:flex w-full'>
-          <Image src='/media/portada.jpg' alt='portada' width={1512} height={341} className='w-full'/>
-        </div>
-        <div className='grid grid-cols-1 mx-2 divide-y divide-solid md:divide-none md:flex lg:w-2/3 justify-evenly py-6 lg:mx-auto my-7 bg-white rounded-md'>
-          {data.mediosDePago.map((medio, index) => {
-            return (
-              <MediosPago
-                key={`medio${index}`}
-                descripcion={medio.descripcion}
-                image={medio.image}
+      <Head>
+        <meta charSet='UTF-8'></meta>
+        <title>Mercado Libre</title>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1.0'
+        ></meta>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'></meta>
+      </Head>
+      <div className='flex h-full w-screen flex-col bg-slate-200 '>
+        <CarContextProvider>
+          <>
+            <Nav />
+            <div className='hidden w-full md:flex'>
+              <Image
+                src='/media/portada.jpg'
+                alt='portada'
+                width={1512}
+                height={341}
+                className='w-full'
               />
-            );
-          })}
-        </div>
-        <div className='grid grid-cols-2 mx-2 md:flex lg:w-2/3 justify-evenly lg:mx-auto gap-4'>
-          {data.productos.map((oferta, index) =>{
-            return (
-              <Ofertas
-                key={oferta.nombre}
-                producto={oferta}
-              />
-            );
-          } )}
-        </div>
-        <div>
-          <Suscripciones/>
-        </div>
-        <Beneficios/>
-        <Carrito/>
-        <ToastContainer />
-        </>
-      </CarContextProvider>
-      
-    </div>
-    </>
-  )
-}
+            </div>
+            <div className='mx-2 my-7 grid grid-cols-1 justify-evenly divide-y divide-solid rounded-md bg-white py-6 md:flex md:divide-none lg:mx-auto lg:w-2/3'>
+              {data.mediosDePago.map((medio, index) => {
+                return (
+                  <MediosPago
+                    key={`medio${index}`}
+                    descripcion={medio.descripcion}
+                    image={medio.image}
+                  />
+                );
+              })}
+            </div>
+            <Seccion titulo='Ofertas' link='Ver todas'>
+              <div className='mx-2 grid grid-cols-2 justify-evenly gap-4 md:flex lg:mx-auto'>
+              {data.productos.map((oferta, index) => {
+                return <Ofertas key={oferta.nombre} producto={oferta} />;
+              })}
+              </div>
+            </Seccion>
+            
+            <div>
+              <Suscripciones />
+            </div>
 
-export default index
+            <Seccion titulo='Beneficios de Mercado Puntos' link='Ver todos los beneficios'>
+              <Beneficios/>
+            </Seccion>
+
+            <Seccion titulo='Categorías populares' link=''>
+              <Categorias/>
+            </Seccion>
+
+            <Info/>
+
+            <Footer />
+
+            <Carrito />
+            <ToastContainer />
+          </>
+        </CarContextProvider>
+      </div>
+    </>
+  );
+};
+
+export default index;

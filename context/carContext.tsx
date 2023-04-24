@@ -5,6 +5,10 @@ interface CarContextProps{
     setOpenCar: Dispatch<SetStateAction<boolean>>;
     itemsCar: CarProduct[];
     setItemsCar: Dispatch<SetStateAction<CarProduct[]>>;
+
+    countItems: number;
+    setCountItems: Dispatch<SetStateAction<number>>;
+
 }
 interface Producto{
     image: string;
@@ -31,6 +35,7 @@ interface CarContextProviderProps{
 const CarContextProvider = ({children}: CarContextProviderProps) => {
     const [openCar, setOpenCar] = useState<boolean>(false);
     const [itemsCar, setItemsCar] = useState<CarProduct[]>([]);
+    const [countItems, setCountItems] = useState<number>(0);
 
     return(
         <CarContext.Provider 
@@ -38,7 +43,9 @@ const CarContextProvider = ({children}: CarContextProviderProps) => {
             openCar,
             setOpenCar,
             itemsCar,
-            setItemsCar
+            setItemsCar,
+            countItems,
+            setCountItems
         }}>
             {children}
         </CarContext.Provider>

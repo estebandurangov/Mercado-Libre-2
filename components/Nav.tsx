@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { MdShoppingCart, MdMenu, MdMenuOpen } from 'react-icons/md';
 import { useCarContext } from '@/context/carContext';
+import { IconCar } from './IconCar';
 
-const Nav = () => {
-    const {setOpenCar} = useCarContext(); 
+const Nav = () => { 
     
   return (
     <nav className='bg-nav'>
@@ -62,7 +62,7 @@ const Nav = () => {
             <span>Crea tu cuenta Ingresa Mis compras</span>
             </div>
             <div className='w-1/8 flex flex-col justify-end text-3xl '>
-                <button onClick={() => (setOpenCar(true))}><MdShoppingCart/></button>
+            <IconCar/>
             </div>
         </div>
         <div className='flex items-center justify-between lg:hidden p-2'>

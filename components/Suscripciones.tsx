@@ -13,7 +13,7 @@ const Suscripciones = () => {
         </div>
         <div className="flex flex-col bg-white p-6 gap-4">
             <div><span>Consigue los mejores beneficios en Mercado Libre</span></div>
-            <div className="flex justify-between items-center">
+            <div className=" lg:flex lg:justify-between items-center">
                 <Suscripcion image="/media/suscripciones/camion.png" suscripcion="Disney+ sin cargo"/>
                 <Suscripcion image="/media/suscripciones/star.png" suscripcion="Star+ sin cargo"/>
                 <Suscripcion image="/media/suscripciones/camion.png" suscripcion="Envíos gratis y rápidos desde $ 90.000 y 40% OFF en envíos de menos de $ 90.000"/>
